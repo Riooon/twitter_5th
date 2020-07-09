@@ -1,0 +1,468 @@
+
+/* profile.phpのコードをコピペ。追加分を一番下に記載。 */
+
+a {
+    text-decoration: none;
+}
+body {
+    display: flex;
+}
+input[type="text"]:focus {
+    outline: none;
+}
+textarea:focus {
+    outline: none;
+}
+
+/* 左3分の1 */
+.left {
+    width: 25%;
+    height: 100vh;
+    border-right: 1px #8080801a solid;
+}
+.left .icon {
+    padding: 1rem 0 0 30%;
+}
+
+.list-entire {
+    padding: 1rem 0 0 30%;
+    display: inline-block;
+}
+.list-entire li {
+    display: flex;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin: 0 0 .7rem;
+    padding: .8rem .8rem;
+    border-radius: 2rem;
+}
+.list-entire li:hover {
+    color: rgb(29, 161, 242);
+    background-color: rgb(237, 249, 255);
+}
+.list-entire li i {
+    width: 1rem;
+    padding: 0 2rem 0 0;
+}
+.list-entire a {
+    color: black;
+}
+.fa-twitter {
+    font-size: 2rem;
+    color: rgb(29, 161, 242);
+}
+.tweet {
+    margin: 2.5rem 0 0 30%;
+}
+.tweet a {
+    background: rgb(29, 161, 242);
+    padding: 1rem 5rem;
+    border-radius: 2rem;
+    color: white;
+}
+.tweet a:hover {
+    background: rgb(9, 138, 217);
+}
+.settings-action {
+    cursor: pointer;
+}
+
+
+/* 真ん中のメインコンテンツ */
+.center {
+    width: 45%;
+    height: 100vh; /*あとで削除。スクロール聞かない*/
+}
+.center-top .title {
+    display: flex;
+    /* font-size: 1.2rem; */
+    font-weight: bold;
+    padding: 1rem 0;
+    border-bottom: 1px solid #8080801a;
+}
+.center-top .title h3{
+    margin: 0 0 0 1rem;
+    font-weight: bold;
+}
+.fa-arrow-left {
+    color: rgb(29, 161, 242);
+}
+
+.tweet-list ul {
+    display: flex;
+    justify-content: space-around;
+    color: gray;
+    font-weight: bold;
+}
+.tweet-list ul li{
+    padding: 1.3rem 2.7rem;
+    border-bottom: 1px solid #8080801a;
+}
+.tweet-list ul li:hover{
+    color: rgb(29, 161, 242);
+    background: rgb(237, 249, 255);
+    border-bottom: 1.5px solid rgb(29, 161, 242);
+}
+.tweet-card {
+    display: flex;
+    border-bottom: 1px solid #8080801a;
+}
+.tweet-card:hover {
+    background: rgb(237, 249, 255);
+}
+.tweet-card .picture {
+    padding: 1rem;
+}
+.tweet-card .picture img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+}
+
+.tweet-card .text {
+    flex: 1;
+}
+.tweet-card .text .info {
+    display: flex;
+    padding: 1rem 0 .7rem;
+}
+.tweet-card .text .info h4{
+    color: black;
+    font-weight: bold;
+}
+.tweet-card .text .info h4:hover{
+    text-decoration: underline;
+}
+.tweet-card .text .info p{
+    color: gray;
+}
+.tweet-card .description {
+    padding: 1.5rem 0;
+}
+.tweet-card .text .reaction {
+    display: flex;
+    color: gray;
+    font-weight: lighter;
+    font-size: 1.3rem;
+    padding: 1rem 0;
+    justify-content: space-around;
+    border-top: 1px solid #8080801a;
+    margin-right: 3rem;
+}
+.fa-retweet:hover {
+    color: #17BF63;
+    border-radius: 70%;
+    background-color: #17bf631e;
+}
+.tweet_result {
+    border-top: 1px solid #8080801a;
+    padding: 1rem 0;
+    margin-right: 3rem;
+    display: flex;
+}
+.tweet_result p {
+    font-weight: bold;
+}
+.tweet_result .texts {
+    font-weight: normal;
+    color: #657786;
+}
+#show_retweeter {
+    margin: 0 1rem 0 0;
+}
+/* クリック時のスタイル変更 */
+.retweeted {
+    color: #17BF63;
+}
+.liked {
+    color: #e91e63;
+}
+
+/* 右の3分の1 */
+.right {
+    background: white;
+    width: 30%;
+    height: 100vh;
+    border-left: 1px solid #8080801a;
+}
+.right h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 4rem;
+    line-height: 4rem;
+}
+.right .colored {
+    color: rgb(29, 161, 242);
+}
+
+/* リツイートした人を表示 */
+#show_retweeter {
+    cursor: pointer;
+}
+#show_retweeter:hover {
+    text-decoration: underline;
+}
+/* いいねした人を表示 */
+#show_liker {
+    cursor: pointer;
+}
+#show_liker:hover {
+    text-decoration: underline;
+}
+
+/* リツイート表示用ポップアップ */
+.retweet_popup {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+}
+.retweeted_by {
+    text-align: left;
+    width: 40%;
+    background: white;
+    height: 70vh;
+    border-radius: 1rem;
+    position: absolute;
+    top: 3rem;
+    right: 25rem;
+    overflow: scroll;
+}
+
+/* リツイート表示用ポップアップ */
+.like_popup {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.4);
+    top: 0;
+    left: 0;
+}
+.liked_by {
+    text-align: left;
+    width: 40%;
+    background: white;
+    height: 70vh;
+    border-radius: 1rem;
+    position: absolute;
+    top: 3rem;
+    right: 25rem;
+    overflow: scroll;
+}
+
+/* リツイート・いいねした人をリストで表示するところ */
+.account_card {
+    border-bottom: 1px #8080801a solid;
+    display: flex;
+    padding: 1rem;
+}
+.account_card img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+}
+.account_card .info {
+    flex: 1;
+    margin: 0 1rem;
+}
+
+.account_card .info .top {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+.account_card .info .top .names h4 {
+    font-weight: bold;
+    margin: 0 0 .4rem;
+}
+.account_card .info .top .names p {
+    color: gray;
+    font-size: 0.9rem;
+    margin: 0 0 .4rem;
+}
+
+/* ツイート用ポップアップ */
+.popup-top h3 {
+    font-weight: bold;
+    margin: 0 0 0 1rem;
+}
+
+/* HTMLを変更するので、クラス名を照らし合わせて再度スタイリング */
+.popup {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    background-color: RGBA(34, 34, 34, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.popup-form {
+    text-align: left;
+    width: 40%;
+    background: white;
+    border-radius: 1rem;
+    position: absolute;
+    top: 3rem;
+    right: 25rem;
+}
+.popup-top {
+    border-bottom: 1px solid #8080801a;
+    display: flex;
+    align-items: center;
+}
+.popup-top i {
+    padding: 1rem;
+    font-size: 1.5rem;
+    color: rgb(29, 161, 242);
+    border-radius: 2rem;
+}
+.popup-top i:hover {
+    background-color: rgb(237, 249, 255);
+}
+.popup-middle {
+    display: flex;
+    align-items: flex-start;
+    padding: .7rem;
+}
+.popup-middle img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 3rem;
+    margin: 0 .7rem 0 0;
+
+}
+.popup textarea {
+    flex: 1;
+    border: none;
+    font-size: 1.5rem;
+    height: 11rem;
+}
+.popup-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+.popup-bottom .logo {
+    color: rgba(29, 161, 242, 0.55);
+    margin: 0 10rem 0 4rem;
+}
+.popup-bottom .logo i {
+    margin: 0 1rem 0 0;
+    font-size: 1.5rem;
+}
+.popup input {
+    color: white;
+    background: rgb(29, 161, 242);
+    border: rgb(29, 161, 242);
+    padding: .8rem 1.5rem;
+    border-radius: 2rem;
+    margin: 0 1rem 0 0;
+}
+.popup input:hover {
+    background: rgb(9, 138, 217);
+}
+/* 文字数オーバー時のスタイル変更 */
+.popup-bottom .btn-disabled {
+    background: rgb(149, 215, 255);
+    border: rgb(149, 215, 255);
+}
+.popup-bottom .btn-disabled:hover {
+    background: rgb(149, 215, 255);
+}
+.cnt_area .text_over {
+    color: #ff478b;
+}
+
+/* 右側 */
+.settings {
+    display: none;
+}
+.settings .title {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-bottom: 1px solid #8080801a;
+}
+.settings .title i {
+    color: rgb(29, 161, 242);
+    margin: 0 1rem 0 0;
+    border-radius: 2rem;
+    padding: 1.2rem;
+}
+.settings .title i:hover {
+    background-color: rgb(237, 249, 255);
+}
+.settings details input {
+    margin: 0 0 0 1.2rem;
+    width: 15rem;
+    height: 1.5rem;
+    border: 1.3px solid black;
+}
+.bio {
+    margin: 0 0 0 1.2rem;
+}
+summary {
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 1.2rem;
+    outline: none;
+    cursor: pointer;
+}
+.right .submit {
+    color: white;
+    background: rgb(29, 161, 242);
+    border: rgb(29, 161, 242);
+    padding: .8rem 1.5rem;
+    border-radius: 2rem;
+    margin: 1.5rem 1.3rem 0;
+    font-size: 1.1rem;
+}
+.right .submit:hover {
+    background: rgb(9, 138, 217);
+}
+.settings ul {
+    margin: 2rem 0 0;
+}
+.settings ul li {
+    margin: 1.5rem 1.3rem 0;
+    display: inline-block;
+}
+.settings .logout {
+    padding: .8rem 1.5rem;
+    border-radius: 2rem;
+    border: 1px solid rgb(29, 161, 242);
+    background-color: #fff;
+    color: rgb(29, 161, 242);
+}
+.settings .logout:hover {
+    background-color: rgb(237, 249, 255);
+}
+.settings .deactivate {
+    padding: .8rem 1.5rem;
+    border-radius: 2rem;
+    background-color: #e91e63;
+    color: #fff;
+}
+.settings .deactivate:hover {
+    background-color: #bc0e49;
+}
+
+
+/* 文字数オーバー時のスタイル変更 */
+.top-bottom .btn-disabled {
+    background: rgb(149, 215, 255);
+    border: rgb(149, 215, 255);
+}
+.top-bottom .btn-disabled:hover {
+    background: rgb(149, 215, 255);
+}
+.cnt_area .text_over {
+    color: #ff478b;
+}

@@ -1,0 +1,110 @@
+/* 全体 */
+a {
+    text-decoration: none;
+}
+.login-main {
+    display: flex;
+}
+
+/* 左半分 */
+.login-left {
+    width: 50%;
+    height: 93vh;
+    background: rgb(29, 161, 242);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-left ul li{
+    font-size: 1.2rem;
+    margin: 0 0 3rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* 右半分 */
+.login-right {
+    width: 50%;
+}
+
+/* 右上 */
+.login-right ul {
+    margin: .6rem .4rem 0;
+    height: 5rem;
+}
+.login-forms {
+    display: flex;
+    justify-content: center;
+    height: 10%;
+}
+.form-text input {
+    height: 3rem;
+    width: 15rem;
+    margin-right: 1rem;
+}
+.form-column {
+    display: flex;
+    flex-direction: column;
+}
+.form-column a{
+    font-size: .8rem;
+    color: gray;
+    margin-top: .7rem;
+}
+.login-right-top {
+    display: flex;
+    align-items: center;
+}
+.form-submit{
+    color: rgb(29, 161, 242);
+    font-weight: bold;
+    border: 1px solid rgb(29, 161, 242);
+    border-radius: 1rem;
+    padding: .5rem .8rem;
+    background:#fff;
+}
+
+/* 右の真ん中 */
+.login-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 80%;
+}
+.whats-happening {
+    font-size: 25px;
+    width: 22rem;
+}
+.whats-happening h1 {
+    margin: 1.5rem 0 3rem;
+}
+.fa-twitter {
+    color: rgb(29, 161, 242);
+}
+.join p {
+    padding: 0 0 0 1rem;
+}
+.join div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.join a {
+    background: rgb(29, 161, 242);
+    color: white;
+    width: 22rem;
+    border-radius: 4rem;
+    padding: .7rem;
+    margin: 1rem 0 0;
+}
+
+/* フッター  */
+.login-footer ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 7vh;
+    font-size: .8rem;
+    flex-wrap: wrap;
+}
